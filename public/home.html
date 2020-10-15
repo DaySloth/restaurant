@@ -20,7 +20,7 @@
             <p>Click to view our current reservations.</p>
             <a class="btn btn-primary btn-lg" href="/reservations" role="button">Reservations</a>
         </div>
-        <form>
+        <form id="reservationForm">
             <div class="form-group">
                 <label for="reserve-name">Name:</label>
                 <input type="name" class="form-control" id="reserve-name" aria-describedby="emailHelp">
@@ -36,7 +36,7 @@
             <button type="submit" class="submit-button">Submit</button>
         </form>
         <script>
-            $("submit-button").on("click", function (event) {
+            $("#reservationForm").on("submit", function (event) {
                 event.preventDefault();
                 let reservation = {
                     name: $("#reserve-name").val().trim(),

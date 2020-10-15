@@ -42,10 +42,11 @@
             if(data[0]){
                 data.forEach(element => {
                     let resList = $("#reservationList");
-                    resList.append(`<li>Name: ${element.reserve-name}</li>`);
-                    resList.append(`<li>Email: ${element.reserve-email}</li>`);
-                    resList.append(`<li>Phone: ${element.reserve-phone}</li>`);
+                    resList.append(`<li>Name: ${element.name}</li>`);
+                    resList.append(`<li>Email: ${element.email}</li>`);
+                    resList.append(`<li>Phone: ${element.phoneNumber}</li>`);
                     resList.append(`<li>UID: ${element.uid}</li>`);
+                    resList.append("<br/>");
                 });
             }else{
                 $("#reservationList").html("<li>No Reservations Found</li>")
@@ -60,6 +61,7 @@
                     resList.append(`<li>Email: ${element.email}</li>`);
                     resList.append(`<li>Phone: ${element.phoneNumber}</li>`);
                     resList.append(`<li>UID: ${element.uid}</li>`);
+                    resList.append("<br/>");
                 });;
             }else{
                 $("#waitingList").html("<li>No Waiting Reservations Found</li>")
