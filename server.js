@@ -1,6 +1,4 @@
 const express = require("express");
-const path = require("path");
-const fs = require("fs");
 const renderHTML = require("./routes/renderHTML.js");
 const initAPIRoute = require("./routes/apiRoutes.js");
 

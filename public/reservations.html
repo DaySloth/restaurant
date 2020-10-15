@@ -56,12 +56,12 @@
         $.get("/api/waiting", function(data){
             if(data[0]){
                 data.forEach(element => {
-                    let resList = $("#reservationList");
-                    resList.append(`<li>Name: ${element.name}</li>`);
-                    resList.append(`<li>Email: ${element.email}</li>`);
-                    resList.append(`<li>Phone: ${element.phoneNumber}</li>`);
-                    resList.append(`<li>UID: ${element.uid}</li>`);
-                    resList.append("<br/>");
+                    let waitList = $("#waitingList");
+                    waitList.append(`<li>Name: ${element.name}</li>`);
+                    waitList.append(`<li>Email: ${element.email}</li>`);
+                    waitList.append(`<li>Phone: ${element.phoneNumber}</li>`);
+                    waitList.append(`<li>UID: ${element.uid}</li>`);
+                    waitList.append("<br/>");
                 });;
             }else{
                 $("#waitingList").html("<li>No Waiting Reservations Found</li>")

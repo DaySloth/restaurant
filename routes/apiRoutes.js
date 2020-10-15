@@ -1,5 +1,3 @@
-const path = require("path");
-const fs = require("fs");
 const reservations = require("../data/reservations.js");
 const waitingList = require("../data/waitingList.js");
 const { v4: uuidv4 } = require('uuid'); 
@@ -10,11 +8,12 @@ const initAPIRoutes = function(app){
         body.uid = uuidv4();
 
         if(reservations.length >= 5){
-            waitingList.push(body)
+            waitingList.push(body);
+            console.log("pushed to waiting list")
         }else{
             reservations.push(body);
         }
-        
+        console.log(reservations.length);
         res.json(body);
         });
 
