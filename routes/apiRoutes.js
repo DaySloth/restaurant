@@ -2,10 +2,12 @@ const path = require("path");
 const fs = require("fs");
 const reservations = require("../data/reservations.js");
 const waitingList = require("../data/waitingList.js");
+const { v4: uuidv4 } = require('uuid'); 
 
 const initAPIRoutes = function(app){
     app.post("/api/reservations", function(req, res){
         let body = req.body;
+        body.uid = uuidv4();
 
         if(reservations.length >= 5){
             waitingList.push(body)
@@ -25,7 +27,7 @@ const initAPIRoutes = function(app){
         }else if(file === "waiting"){
             res.json(waitingList);
         }else {
-            res.send("Please use '/api/reservations' or '/api/waiting'")
+            res.send("Please use '/api/reservations' or '/api/waiting' to see reservations or waiting list")
         };
     });
 }
