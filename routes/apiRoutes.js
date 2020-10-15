@@ -20,9 +20,9 @@ const initAPIRoutes = function(app){
         let file = req.params.file;
 
         if(file === "reservations"){
-            res.json("../data/reservations.json");
+            res.sendFile(path.join(__dirname, "../data/reservations.json"));
         }else if(file === "waiting"){
-            res.json("../data/waiting.json")
+            res.sendFile(path.join(__dirname, "../data/waiting.json"));
         }else {
             res.send("Please use '/API/reservations' or '/API/waiting'")
         };
