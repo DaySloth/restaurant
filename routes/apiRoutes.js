@@ -1,32 +1,33 @@
 const path = require("path");
 const fs = require("fs");
+const reservations = require("../data/reservations.js");
+const waitingList = require("../data/waitingList.js");
 
 const initAPIRoutes = function(app){
-    app.post("/API/reservations", function(req, res){
+    app.post("/api/reservations", function(req, res){
         let body = req.body;
-        fs.appendFile("../data/reservations.json", body + '\n\n', function(err){
-            if(err){
-                throw err;
-            }
 
-            console.log("Wrote to 'reservations.json' File");
-
-            res.json(body);
+        if(reservations.length >= 5){
+            waitingList.push(body)
+        }else{
+            reservations.push(body);
+        }
+        
+        res.json(body);
         });
-    });
 
 
-    app.get("/API/:file", function(req, res){
+    app.get("/api/:file", function(req, res){
         let file = req.params.file;
 
         if(file === "reservations"){
-            res.sendFile(path.join(__dirname, "../data/reservations.json"));
+            res.json(reservations)
         }else if(file === "waiting"){
-            res.sendFile(path.join(__dirname, "../data/waiting.json"));
+            res.json(waitingList);
         }else {
-            res.send("Please use '/API/reservations' or '/API/waiting'")
+            res.send("Please use '/api/reservations' or '/api/waiting'")
         };
-    })
+    });
 }
 
 module.exports = initAPIRoutes;
