@@ -11,10 +11,6 @@ app.use(express.json());
 
 const PORT = process.env.PORT || 4444;
 
-
-let reservations = [];
-let waitingList = [];
-
 renderHTML(app);
 initAPIRoute(app);
 
