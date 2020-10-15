@@ -1,10 +1,12 @@
+const path = require("path");
+
 const renderHTML = function(app){
     app.get("/", function(req, res){
-        res.send("Home page")
+        res.sendFile(path.join(__dirname, "../public/home.html"));
     });
     
     app.get("/reservations", function(req, res){
-        res.sendFile(__dirname + "/public/reservations.html");
+        res.sendFile(path.join(__dirname, "../public/reservations.html"));
     });
 };
 
